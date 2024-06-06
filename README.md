@@ -18,30 +18,6 @@ On Day 6, I built "Billify," a bill generating app, to dive into DOM manipulatio
 
 I'm excited to dive into the practical application of the skills I've learned and to continue building my web development expertise. Stay tuned for more updates and projects as I progress through my #60DaysOfLearning!
 
-## Repository Structure
-
-Here's a quick overview of the repository structure:
-
-/
-├── day1-4/
-│ ├── exercises/
-│ └── notes/
-├── day5/
-│ └── git-course/
-├── day6/
-│ └── billify/
-│ ├── index.html
-│ ├── style.css
-│ └── app.js
-└── README.md
-
-
-- **day1-4/**: Contains notes and exercises from the JavaScript foundations set.
-- **day5/**: Contains resources and notes from the Git refresh course.
-- **day6/**: Contains the "Billify" app, including HTML, CSS, and JavaScript files.
-
----
-
 Feel free to explore the repository and follow along with my journey. Any feedback, suggestions, or collaboration ideas are welcome!
 
 Happy coding!
