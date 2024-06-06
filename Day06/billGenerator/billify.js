@@ -1,6 +1,11 @@
 //DOM elements
 const hamBar = document.querySelectorAll(".ham-bar");
 const items = document.querySelector(".js-bill-items");
+// DOM elements
+const descriptionInput = document.querySelector(".js-description");
+const qtyInput = document.querySelector(".js-quantity");
+const priceInput = document.querySelector(".js-price");
+const totalValue = document.querySelector(".js-total");
 
 document.querySelector(".hamburger-menu").addEventListener("click", () => {
   hamBar.forEach((bar) => {
@@ -10,16 +15,17 @@ document.querySelector(".hamburger-menu").addEventListener("click", () => {
   });
 });
 
-const billItems = [];
+const billItems = localStorage.getItem("bill")
+  ? JSON.parse(localStorage.getItem("bill"))
+  : [];
+renderItem();
 
 document.querySelector(".js-add-items").addEventListener("click", () => {
   addItem();
 });
 
 function addItem() {
-  const descriptionInput = document.querySelector(".js-description");
   const description = descriptionInput.value;
-  const qtyInput = document.querySelector(".js-quantity");
   const quantity = qtyInput.value;
   const priceInput = document.querySelector(".js-price");
   const price = priceInput.value;
@@ -31,7 +37,8 @@ function addItem() {
     price,
     total,
   });
-  document.querySelector('.js-total').value = total;
+  localStorage.setItem("bill", JSON.stringify(billItems));
+  document.querySelector(".js-total").value = total;
   renderItem();
   console.log(billItems);
 }
@@ -54,7 +61,26 @@ function renderItem() {
    
     </div>
     `;
-    billHTML+=html;
+    billHTML += html;
   });
-  document.querySelector('.js-bill-items-input').innerHTML=billHTML;
+
+  document.querySelector(".js-bill-items-input").innerHTML = billHTML;
+
+  descriptionInput.value = ``;
+  qtyInput.value = ``;
+  priceInput.value = ``;
+  totalValue.value = ``;
 }
+
+//clear all button
+const clearAll = document.querySelector(".js-clear-all");
+
+clearAll.addEventListener("click", () => {
+  localStorage.clear();
+  billItems.length = 0;
+  renderItem();
+});
+
+
+
+
