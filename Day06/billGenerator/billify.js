@@ -98,7 +98,7 @@ generateBill.addEventListener("click", () => {
 </div>
 <div class="g-bill-info">
   <div class="g-bill-name">Sabin Shrestha</div>
-  <div class="g-bill-date">Today</div>
+  <div class="g-bill-date">06/06/2024</div>
 </div>
 
 <table class="bill-table">
@@ -113,8 +113,10 @@ generateBill.addEventListener("click", () => {
 </table>
 <div class="g-bill-items-input js-bill-items-input">${billHTML}</div>
 <div class="grand-total js-grand-total">Grand Total: ${grandTotal.toFixed(2)}</div>
+<div class="print-bill js-print-bill">PRINT BILL</div>
 </div>`;
 });
+
 
 
   // Add event listeners to the minus icons
@@ -138,3 +140,8 @@ clearAll.addEventListener("click", () => {
 });
 
 
+
+
+document.querySelector('.js-print-bill').addEventListener('click', ()=>{
+  alert('No printer connected!');
+})

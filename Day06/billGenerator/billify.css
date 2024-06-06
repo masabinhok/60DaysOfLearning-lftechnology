@@ -314,6 +314,19 @@ header .js-ham-bar:nth-child(3) {
   cursor: pointer;
   font-family: "Montserrat";
 }
+.print-bill{
+  margin-top:16px;
+  width:200px;
+  text-align: center;
+  padding: 8px 30px;
+  border-radius: 8px;
+  border: none;
+  background-color: rgb(0, 0, 0);
+  color: orange;
+  font-size: 20px;
+  cursor: pointer;
+  font-family: "Montserrat";
+}
 
 .generate-bill {
   padding: 8px 30px;
