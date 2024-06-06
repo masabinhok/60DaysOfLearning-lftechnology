@@ -18,7 +18,6 @@
     />
 
     <!-- stylesheets -->
-
     <link rel="stylesheet" href="billify.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -53,9 +52,8 @@
             </div>
           </div>
           <div class="bill-sub-header2">
-            <input placeholder="Bill Title" class="bill-title" type="text" />
-
-            <input class="bill-date" type="date" />
+            <input required class="bill-title js-bill-title" type="text" placeholder="Name" />
+            <input required class="bill-date js-bill-date" type="date" />
           </div>
         </div>
 
@@ -78,7 +76,6 @@
                 type="text"
                 placeholder="Item"
               />
-
               <input class="js-quantity quantity" placeholder="1" type="text" />
               <input class="js-price price" placeholder="100" type="text" />
               <input
@@ -97,7 +94,7 @@
             <span class="add-icon">+</span>
           </button>
 
-          <div class="grand-total">Grand Total:</div>
+          <div class="grand-total js-grand-total">Grand Total: 0</div>
           <div class="bill-buttons">
             <button class="clear-all js-clear-all">CLEAR ALL</button>
             <button class="generate-bill js-generate-bill">
@@ -107,6 +104,11 @@
         </div>
       </div>
     </main>
+
+    <section class="generate-bill-div js-generate-bill-div">
+      
+    </section>
+
     <script src="billify.js"></script>
   </body>
 </html>

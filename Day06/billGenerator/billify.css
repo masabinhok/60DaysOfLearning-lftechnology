@@ -5,7 +5,8 @@
 }
 
 body {
-  background-color: orange;
+  background-color: rgb(255, 153, 0);
+  
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -27,6 +28,7 @@ header {
   justify-content: space-between;
   height: 200px;
   align-items: center;
+  padding:40px;
 }
 
 header .hamburger-menu {
@@ -69,8 +71,9 @@ header .js-ham-bar:nth-child(3) {
 .bill {
   width: 1000px;
   height: fit-content;
-  border: 1px solid white;
+  border-radius: 16px;
   padding: 20px;
+  background-color:orange;
 }
 
 .bill-header {
@@ -298,7 +301,7 @@ header .js-ham-bar:nth-child(3) {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin-top:40px;
+  margin-top: 40px;
 }
 
 .clear-all {
@@ -322,3 +325,48 @@ header .js-ham-bar:nth-child(3) {
   cursor: pointer;
   font-family: "Montserrat";
 }
+
+/* generated bill css */
+
+.generate-bill-div {
+  width: 1000px;
+  height:fit-content;
+  background-color: #e7e7e7;
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.g-bill-info{
+  padding:20px;
+  font-size:20px;
+  font-weight: 800;
+  display: flex;
+  flex-direction: row;
+  gap:8px;
+  justify-content: space-between;
+  align-items: end;
+}
+
+
+.g-bill-item-header {
+  display: flex;
+  flex-direction: row;
+  background-color: #d3d3d3;
+  padding: 8px;
+  height: 50px;
+  font-size: 20px;
+  align-items: center;
+  border-radius: 10px;
+  margin-bottom:10px;
+}
+
+.g-bill-items-input{
+  padding:8px;
+  border-radius: 10px;
+  margin-bottom:10px;
+  background-color: #d3d3d3;
+}
+
