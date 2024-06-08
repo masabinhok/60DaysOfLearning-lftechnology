@@ -157,6 +157,10 @@ div#game {
   display:block;
 }
 
+#game:focus {
+  outline : none;
+}
+
 
 
 
