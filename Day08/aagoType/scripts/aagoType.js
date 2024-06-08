@@ -8,9 +8,6 @@ function randomWord() {
   return words[randomIndex - 1];
 }
 
-//default loading
-newGame();
-
 function addClass(el, name) {
   el.className += " " + name;
 }
@@ -40,17 +37,36 @@ function newGame() {
 //
 document.getElementById("game").addEventListener("keyup", (ev) => {
   const key = ev.key;
+  const currentWord = document.querySelector(".word.current");
   const currentLetter = document.querySelector(".letter.current");
   const expected = currentLetter.textContent;
   const isLetter = key.length === 1 && key !== " ";
+  const isSpace = key === " ";
   console.log(key, expected);
 
   if (isLetter) {
     if (currentLetter) {
-      addClass(currentLetter, key === expected ? 'correct': 'incorrect');
-      removeClass(currentLetter, 'current');
-      addClass(currentLetter.nextSibling, 'current');
+      addClass(currentLetter, key === expected ? "correct" : "incorrect");
+      removeClass(currentLetter, "current");
+      addClass(currentLetter.nextSibling, "current");
     }
+  }
+
+  if (isSpace) {
+    if (expected !== " ") {
+      const lettersToInvalidate = [
+        ...document.querySelectorAll(".word.current .letter:not(.correct)"),
+      ];
+      lettersToInvalidate.forEach((letter) => {
+        addClass(letter, "incorrect");
+      });
+    }
+    removeClass(currentWord, "current");
+    addClass(currentWord.nextElementSibling, "current");
+    if (currentLetter) {
+      removeClass(currentLetter, "current");
+    }
+    addClass(currentWord.nextSibling.firstChild, "current");
   }
 });
 
@@ -59,3 +75,6 @@ document.querySelector(".new-game").addEventListener("click", newGame);
 
 //restart-button evenlistener
 document.querySelector(".try-again").addEventListener("click", newGame);
+
+//default loading
+newGame();
