@@ -1,0 +1,144 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Mukta", sans-serif;
+  background-color: rgb(0, 0, 0);
+  color: #683434;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* color: #b31313;
+  color: rgb(226, 96, 7); */
+}
+
+header {
+  width: 1200px;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.header-logo {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo-name {
+  font-size: 80px;
+  font-weight: 700;
+  color: rgb(226, 57, 57);
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff9900,
+    #ffff00
+  ); /* Adjust gradient colors as needed */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: saturateAnimation 5s linear infinite alternate;
+}
+
+@keyframes saturateAnimation {
+  0% {
+    filter: saturate(0%);
+  }
+  100% {
+    filter: saturate(200%);
+  }
+}
+
+.logo-slogan {
+  font-size: 40px;
+  color: rgb(252, 118, 118);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 4px solid red;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.container-head {
+  width: 1400px;
+  height: 100px;
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+  font-family: "Montserrat";
+}
+
+.timer {
+  font-size: 30px;
+  color: red;
+}
+
+.english {
+  font-size: 24px;
+}
+
+.container {
+  width: 1400px;
+  height: 300px;
+  padding: 40px;
+  font-size: 40px;
+}
+
+.container-foot {
+  width: 1400px;
+  height: 100px;
+  display: flex;
+  padding: 20px;
+  font-size: 30px;
+  justify-content: space-around;
+}
+
+button {
+  padding: 16px 32px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #683434;
+  background-color: black;
+  border: 1px solid red;
+}
+
+button:hover {
+  border: 1px solid #683434;
+  background-color: #683434;
+  color: black;
+}
+
+footer {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  padding: 40px;
+  position: fixed;
+  bottom: 0;
+}
+
+.footer-credit {
+  font-family: cursive;
+  font-size: 20px;
+}
+
+.footer-slogan {
+  letter-spacing: 10px;
+  padding-top: 10px auto 5px;
+}
