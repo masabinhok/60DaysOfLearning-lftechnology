@@ -35,7 +35,11 @@
         <div class="english">English/QWERTY</div>
         <button class="new-game">NEW GAME</button>
       </div>
-      <div class="container">the quick brown fox jumps over the lazy dog</div>
+      <div id="game" tabindex="0">
+        <div id="words"></div>
+        <div id="cursor"></div>
+        <div id="focus-error">Click here to focus.</div>
+      </div>
       <div class="container-foot">
         <div class="wpm">WPM</div>
         <button class="try-again">RESTART</button>
@@ -47,6 +51,6 @@
       <p class="copyright">© 2024. All rights reserved.</p>
     </footer>
 
-    <script src="aagoType.js"></script>
+    <script type="module" src="scripts/aagoType.js"></script>
   </body>
 </html>

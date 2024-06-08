@@ -87,12 +87,71 @@ main {
   font-size: 24px;
 }
 
-.container {
+div#game {
   width: 1400px;
   height: 300px;
   padding: 40px;
   font-size: 40px;
+  font-weight:600;
+  overflow: hidden;
+  position: relative;
+  margin-bottom:40px;
 }
+
+#focus-error {
+  position: absolute;
+  inset: 0;
+  color: #683434;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.word {
+  display: inline-block;
+  margin: 0 5px;
+
+}
+#words {
+  filter: blur(5px);
+}
+
+#game:focus #words {
+  filter: blur(0px);
+}
+
+#game:focus #focus-error {
+  display: none;
+}
+
+
+.letter.correct{
+  color:white;
+}
+
+
+.letter.incorrect{
+  color:red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .container-foot {
   width: 1400px;
