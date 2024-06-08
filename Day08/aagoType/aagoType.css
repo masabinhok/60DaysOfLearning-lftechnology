@@ -92,10 +92,10 @@ div#game {
   height: 300px;
   padding: 40px;
   font-size: 40px;
-  font-weight:600;
+  font-weight: 600;
   overflow: hidden;
   position: relative;
-  margin-bottom:40px;
+  margin-bottom: 40px;
 }
 
 #focus-error {
@@ -109,7 +109,6 @@ div#game {
 .word {
   display: inline-block;
   margin: 0 5px;
-
 }
 #words {
   filter: blur(5px);
@@ -123,14 +122,39 @@ div#game {
   display: none;
 }
 
-
-.letter.correct{
-  color:white;
+.letter.correct {
+  color: white;
 }
 
+.letter.incorrect {
+  color: red;
+}
 
-.letter.incorrect{
-  color:red;
+#cursor {
+  width: 2px;
+  height: 30px;
+  color: white;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  animation :blink 0.5s infinite;
+  display: none;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100%{
+    opacity:1;
+  }
+}
+
+#game:focus #cursor {
+  display:block;
 }
 
 
@@ -188,8 +212,6 @@ footer {
   justify-content: center;
   height: fit-content;
   padding: 40px;
-  position: fixed;
-  bottom: 0;
 }
 
 .footer-credit {
