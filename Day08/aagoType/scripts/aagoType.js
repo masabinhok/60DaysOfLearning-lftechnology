@@ -1,6 +1,9 @@
 import { words } from "./data.js";
 
 const wordCount = words.length;
+const gameTime = 14 * 1000;
+window.timer = null;
+window.gameStart = null;
 
 //generate random word
 function randomWord() {
@@ -32,6 +35,7 @@ function newGame() {
   }
   document.querySelector(".word").classList.add("current");
   document.querySelector(".letter").classList.add("current");
+  window.timer = null;
 }
 
 //
@@ -45,6 +49,22 @@ document.getElementById("game").addEventListener("keyup", (ev) => {
   const isBackspace = key === "Backspace";
   const isFirstLetter = currentWord.firstElementChild === currentLetter;
   console.log({ key, expected });
+
+  if ((!window.timer && isLetter) || isSpace) {
+    window.timer = setInterval(() => {
+      if (!window.gameStart) {
+        window.gameStart = new Date().getTime();
+      }
+      const currentTime = new Date().getTime();
+      const msPassed = gameStart - currentTime; //1000ms
+      const sPassed = Math.round(msPassed / 1000); //1s
+      const sLeft = gameTime / 1000 + sPassed; //14s
+
+      if (sLeft >= 0) {
+        document.querySelector(".timer").innerHTML = sLeft + " ";
+      }
+    }, 1000);
+  }
 
   if (isLetter) {
     if (currentLetter) {

@@ -132,9 +132,10 @@ div#game {
 }
 
 #cursor {
-  font-size:36px;
+  font-size:30px;
   display: none;
   width: 2px;
+  color:transparent;
   background: white;
   position: fixed;
   top: 375px;
