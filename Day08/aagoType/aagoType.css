@@ -221,3 +221,8 @@ footer {
 #game.over #focus-error {
   display: none;
 }
+
+
+.wpm.over {
+  color:red;
+}

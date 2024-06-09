@@ -1,7 +1,7 @@
 import { words } from "./data.js";
 
 const wordCount = words.length;
-const gameTime = 14 * 1000;
+const gameTime = 14 *1000 ;
 window.timer = null;
 window.gameStart = null;
 
@@ -35,13 +35,34 @@ function newGame() {
   }
   document.querySelector(".word").classList.add("current");
   document.querySelector(".letter").classList.add("current");
+  document.querySelector('.timer').innerHTML = gameTime / 1000 +1;
   window.timer = null;
+
+}
+
+//
+function getWpm() {
+  const words = [...document.querySelectorAll('.word')];
+  const lastTypedWord = document.querySelector('.word.current');
+  const lastTypedWordIndex = words.indexOf(lastTypedWord);
+  const typedWords = words.slice(0, lastTypedWordIndex);
+  const correctWords = typedWords.filter(word=>{
+    const letters = [...word.children];
+    const incorrectLetters = letters.filter(letter => letter.className.includes('incorrect'));
+    const correctLetters = letters.filter(letter => letter.className.includes('correct'));
+    return incorrectLetters.length === 0  && correctLetters.length === letters.length;
+  })
+  return correctWords.length / gameTime * 60000;
+
+
+
 }
 
 //game over
 function gameOver() {
   clearInterval(window.timer);
   addClass(document.getElementById("game"), "over");
+  document.querySelector(".wpm").innerHTML = `WPM ${getWpm()}`;
 }
 
 //
@@ -69,13 +90,13 @@ document.getElementById("game").addEventListener("keyup", (ev) => {
       const currentTime = new Date().getTime();
       const msPassed = gameStart - currentTime; //1000ms
       const sPassed = Math.round(msPassed / 1000); //1s
-      const sLeft = gameTime / 1000 + sPassed; //14s
+      const sLeft = gameTime/1000 + sPassed; //14s
       if (sLeft <= 0) {
         gameOver();
+        return;
       }
-      if (sLeft >= 0) {
-        document.querySelector(".timer").innerHTML = sLeft + " ";
-      }
+
+      document.querySelector(".timer").innerHTML = sLeft + " ";
     }, 1000);
   }
 
@@ -168,10 +189,10 @@ document.getElementById("game").addEventListener("keyup", (ev) => {
 });
 
 //new-game-button eventlistener
-document.querySelector(".new-game").addEventListener("click", newGame);
-
-//restart-button evenlistener
-document.querySelector(".try-again").addEventListener("click", newGame);
+document.querySelector(".new-game").addEventListener("click", ()=>{
+  gameOver();
+  newGame();
+});
 
 //default loading
 newGame();
