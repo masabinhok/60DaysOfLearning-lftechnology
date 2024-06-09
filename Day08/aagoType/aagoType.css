@@ -75,7 +75,7 @@ main {
   padding: 20px;
   width: 100%;
   max-width: 1200px;
-  margin-top:50px;
+  margin-top:20px;
 }
 
 .container-head {
@@ -196,13 +196,22 @@ button {
   cursor: pointer;
   color: rgb(255, 136, 0);
   background-color: black;
-  border: 1px solid red;
+  border: 1px solid rgb(255, 136, 0);
 }
 
 button:hover {
   border: 1px solid rgb(255, 136, 0);
   background-color: rgb(255, 136, 0);
   color: black;
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff9900,
+    #ffff00
+  ); /* Adjust gradient colors as needed */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: saturateAnimation 5s linear infinite alternate;
 }
 
 footer {
@@ -258,4 +267,23 @@ footer {
 .message {
   font-size: 30px;
   color: rgb(255, 136, 0);
+}
+
+
+.timer-input {
+  padding:20px;
+}
+
+.timer-input button{
+  font-family: 'Montserrat', sans-serif;
+  font-size:20px;
+  font-weight: 400;
+  margin:4px;
+  border:1px solid rgb(255, 174, 0);
+  display: inline-block;
+}
+
+
+.timer-input.hidden {
+  display:none;
 }

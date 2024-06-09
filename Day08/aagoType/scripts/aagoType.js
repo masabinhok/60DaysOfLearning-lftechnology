@@ -1,9 +1,37 @@
 import { words } from "./data.js";
 
 const wordCount = words.length;
-const gameTime = 14 * 1000;
+let gameTime = 14 * 1000;
 window.timer = null;
 window.gameStart = null;
+
+//timing-buttons
+const fifteen = document.querySelector(".fifteen");
+const thirty = document.querySelector(".thirty");
+const fortyfive = document.querySelector(".fourty-five");
+const sixty = document.querySelector(".sixty");
+
+fifteen.addEventListener("click", () => {
+  gameTime = 14 * 1000;
+  hideTimerInput();
+  newGame();
+});
+
+thirty.addEventListener("click", () => {
+  gameTime = 29 * 1000;
+  hideTimerInput();
+  newGame();
+});
+fortyfive.addEventListener("click", () => {
+  gameTime = 44 * 1000;
+  hideTimerInput();
+  newGame();
+});
+sixty.addEventListener("click", () => {
+  gameTime = 59 * 1000;
+  hideTimerInput();
+  newGame();
+});
 
 //generate random word
 function randomWord() {
@@ -29,13 +57,15 @@ function formatWord(word) {
 
 //new game
 function newGame() {
+
   document.querySelector("#words").innerHTML = "";
   for (let i = 0; i < 200; i++) {
     document.querySelector("#words").innerHTML += formatWord(randomWord());
   }
   document.querySelector(".word").classList.add("current");
   document.querySelector(".letter").classList.add("current");
-  document.querySelector(".timer").innerHTML = gameTime / 1000 + 1 + ' ';
+  document.querySelector(".timer").innerHTML = gameTime / 1000 + 1 + " ";
+  clearTimeout(window.timer);
   window.timer = null;
 }
 
@@ -60,9 +90,16 @@ function getWpm() {
   return Math.ceil((correctWords.length / gameTime) * 60000);
 }
 
+//hide timer-input 
+function hideTimerInput(){
+  document.querySelector(".timer-input").classList.add("hidden");
+}
+
+
 //game over
 function gameOver() {
-  clearInterval(window.timer);
+  hideTimerInput();
+  clearTimeout(window.timer);
   addClass(document.getElementById("game"), "over");
   const wpm = getWpm();
   document.querySelector(".wpm").innerHTML = `WPM ${wpm}`;
@@ -72,25 +109,23 @@ function gameOver() {
     document.querySelector(".message").innerHTML =
       "झिल्का छरिँदै छन्, अझै बल्नुछ!";
   } else if (wpm >= 20 && wpm < 30) {
-    document.querySelector(".message").innerHTML =
-      "यो त धुवाँ मात्रै हो, थोरै तातो चाहिन्छ।";
+    document.querySelector(".message").innerHTML = "यो त धुवाँ मात्रै हो!";
   } else if (wpm >= 30 && wpm < 40) {
-    document.querySelector(".message").innerHTML =
-      "आगो बाल्न थाल्दै, अब तातिन थाल्यो।";
+    document.querySelector(".message").innerHTML = "अब तातिन थाल्यो।";
   } else if (wpm >= 40 && wpm < 50) {
     document.querySelector(".message").innerHTML = "आगो छ त!";
   } else if (wpm >= 50 && wpm < 60) {
     document.querySelector(".message").innerHTML =
-      "आगो राम्रोसँग बल्दै छ, अझ राम्रो गरौं!";
+      "आगो बल्दै छ, अझ राम्रो गरौं!";
   } else if (wpm >= 60 && wpm < 70) {
     document.querySelector(".message").innerHTML =
       "आगो त राम्रो बल्दैछ, गजबको काम!";
   } else if (wpm >= 70 && wpm < 80) {
     document.querySelector(".message").innerHTML =
-      "लप्का उचाल्दैछन्, तिमी उत्कृष्ट छौ!";
+      "लप्का उचाल्दैछन्, उत्कृष्ट!";
   } else if (wpm >= 80 && wpm < 90) {
     document.querySelector(".message").innerHTML =
-      "आगोको राप गज्जबको छ, उत्कृष्ट छ!";
+      "आगोको राप गज्जबको छ, उत्कृष्ट!";
   } else if (wpm >= 90 && wpm < 100) {
     document.querySelector(".message").innerHTML =
       "तिमी त झिल्काहरुको जादुगर नै भयौ!";
@@ -234,6 +269,12 @@ document.getElementById("game").addEventListener("keyup", (ev) => {
 document.querySelector(".new-game").addEventListener("click", () => {
   location.reload();
 });
+
+document.addEventListener('keydown', ev=>{
+  if(ev.key === 'Enter'){
+    location.reload();
+  }
+})
 
 //default loading
 newGame();
