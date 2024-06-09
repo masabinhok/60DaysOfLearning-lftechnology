@@ -39,16 +39,19 @@ document.getElementById("game").addEventListener("keyup", (ev) => {
   const key = ev.key;
   const currentWord = document.querySelector(".word.current");
   const currentLetter = document.querySelector(".letter.current");
-  const expected = currentLetter.textContent;
+  const expected = currentLetter?.innerHTML || " ";
   const isLetter = key.length === 1 && key !== " ";
+
   const isSpace = key === " ";
-  console.log(key, expected);
+  console.log({ key, expected });
 
   if (isLetter) {
     if (currentLetter) {
       addClass(currentLetter, key === expected ? "correct" : "incorrect");
       removeClass(currentLetter, "current");
-      addClass(currentLetter.nextSibling, "current");
+      if (currentLetter.nextElementSibling) {
+        addClass(currentLetter.nextSibling, "current");
+      }
     }
   }
 
@@ -63,10 +66,11 @@ document.getElementById("game").addEventListener("keyup", (ev) => {
     }
     removeClass(currentWord, "current");
     addClass(currentWord.nextElementSibling, "current");
+
     if (currentLetter) {
       removeClass(currentLetter, "current");
     }
-    addClass(currentWord.nextSibling.firstChild, "current");
+    addClass(currentWord.nextSibling.firstElementChild, "current");
   }
 });
 

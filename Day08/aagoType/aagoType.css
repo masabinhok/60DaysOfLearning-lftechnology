@@ -137,7 +137,7 @@ div#game {
   position: absolute;
   top: 40px;
   left: 40px;
-  animation :blink 0.5s infinite;
+  animation: blink 0.5s infinite;
   display: none;
 }
 
@@ -148,38 +148,18 @@ div#game {
   50% {
     opacity: 0;
   }
-  100%{
-    opacity:1;
+  100% {
+    opacity: 1;
   }
 }
 
 #game:focus #cursor {
-  display:block;
+  display: block;
 }
 
 #game:focus {
-  outline : none;
+  outline: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .container-foot {
   width: 1400px;
