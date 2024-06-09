@@ -57,7 +57,6 @@ function formatWord(word) {
 
 //new game
 function newGame() {
-
   document.querySelector("#words").innerHTML = "";
   for (let i = 0; i < 200; i++) {
     document.querySelector("#words").innerHTML += formatWord(randomWord());
@@ -90,11 +89,10 @@ function getWpm() {
   return Math.ceil((correctWords.length / gameTime) * 60000);
 }
 
-//hide timer-input 
-function hideTimerInput(){
+//hide timer-input
+function hideTimerInput() {
   document.querySelector(".timer-input").classList.add("hidden");
 }
-
 
 //game over
 function gameOver() {
@@ -272,11 +270,23 @@ document.querySelector(".new-game").addEventListener("click", () => {
   location.reload();
 });
 
-document.addEventListener('keydown', ev=>{
-  if(ev.key === 'Enter'){
+document.addEventListener("keydown", (ev) => {
+  if (ev.key === "Enter") {
     location.reload();
   }
-})
+});
+
+document.addEventListener("keydown", (ev) => {
+  if (ev.key === " ") {
+    ev.prevent.default();
+  }
+});
+
+document.getElementById("game").addEventListener("keydown", (ev) => {
+  if (ev.key === " ") {
+    ev.preventDefault();
+  }
+});
 
 //default loading
 newGame();
