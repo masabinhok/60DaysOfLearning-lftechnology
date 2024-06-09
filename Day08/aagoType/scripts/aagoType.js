@@ -49,9 +49,17 @@ document.getElementById("game").addEventListener("keyup", (ev) => {
     if (currentLetter) {
       addClass(currentLetter, key === expected ? "correct" : "incorrect");
       removeClass(currentLetter, "current");
+
       if (currentLetter.nextElementSibling) {
         addClass(currentLetter.nextSibling, "current");
       }
+    }
+    
+    else {
+      const incorrectLetter = document.createElement("span");
+      incorrectLetter.innerHTML = key;
+      incorrectLetter.className = "letter incorrect extra";
+      currentWord.appendChild(incorrectLetter);
     }
   }
 
