@@ -111,6 +111,13 @@ document.getElementById("game").addEventListener("keyup", (ev) => {
     }
   }
 
+  //move lines/words
+  if (currentWord.getBoundingClientRect().top > 420) {
+    const words = document.getElementById("words");
+    const margin = parseInt(words.style.marginTop || "0px");
+    words.style.marginTop = margin - 30 + "px";
+  }
+
   // Move cursor to the position of the current letter or word
   const nextLetter = document.querySelector(".letter.current");
   const nextWord = document.querySelector(".word.current");
