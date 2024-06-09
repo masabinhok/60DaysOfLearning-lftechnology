@@ -265,10 +265,17 @@ footer {
 }
 
 .message {
-  font-size: 30px;
-  color: rgb(255, 136, 0);
+  font-size: 20px;
+  color: rgb(252, 118, 118);
+  
 }
 
+.message.nepali{
+  font-size:30px;
+  color: rgb(255, 136, 0);
+
+
+}
 
 .timer-input {
   padding:20px;

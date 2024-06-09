@@ -101,6 +101,7 @@ function gameOver() {
   hideTimerInput();
   clearTimeout(window.timer);
   addClass(document.getElementById("game"), "over");
+  addClass(document.querySelector(".message"), "nepali");
   const wpm = getWpm();
   document.querySelector(".wpm").innerHTML = `WPM ${wpm}`;
   if (wpm >= 0 && wpm < 10) {
@@ -156,6 +157,7 @@ document.getElementById("game").addEventListener("keyup", (ev) => {
 
   if (isSpace || isLetter) {
     document.querySelector("#cursor").classList.add("blink");
+    hideTimerInput();
   }
 
   if ((!window.timer && isLetter) || isSpace) {
