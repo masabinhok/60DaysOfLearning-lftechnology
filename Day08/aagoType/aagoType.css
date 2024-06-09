@@ -18,19 +18,22 @@ body {
 }
 
 header {
-  width: 1200px;
-  padding: 40px;
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
 .header-logo {
   flex: 1;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
+
 .logo-name {
   font-size: 80px;
   font-weight: 700;
@@ -56,7 +59,10 @@ header {
 }
 
 .logo-slogan {
-  font-size: 40px;
+  text-align: center;
+  font-size: 24px;
+  margin-top:-20px;
+  letter-spacing: 10px;
   color: rgb(252, 118, 118);
 }
 
@@ -67,36 +73,42 @@ main {
   border: 4px solid red;
   border-radius: 16px;
   padding: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin-top:50px;
 }
 
 .container-head {
-  width: 1400px;
-  height: 100px;
+  width: 100%;
+  max-width: 1200px;
+  height: 80px;
   display: flex;
-  padding: 20px;
+  padding: 20px 20px 0px;
   justify-content: space-between;
   font-family: "Montserrat";
+  align-items: center;
 }
 
 .timer {
-  font-size: 30px;
-  color: red;
+  font-size: 24px;
+  color: rgb(255, 136, 0);
 }
 
 .english {
-  font-size: 24px;
+  font-size: 20px;
 }
 
 div#game {
-  width: 1400px;
-  height: 280px;
-  line-height: 70px;
-  padding: 40px;
-  font-size: 40px;
+  width: 100%;
+  max-width: 1200px;
+  height: 200px;
+  line-height: 50px;
+  padding: 20px;
+  font-size: 30px;
   font-weight: 600;
   overflow: hidden;
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 #focus-error {
@@ -104,13 +116,14 @@ div#game {
   inset: 0;
   color: #683434;
   text-align: center;
-  padding-top: 100px;
+  padding-top: 70px;
 }
 
 .word {
   display: inline-block;
-  margin: 0 5px;
+  margin: 0 3px;
 }
+
 #words {
   filter: blur(5px);
 }
@@ -124,7 +137,7 @@ div#game {
 }
 
 .letter.correct {
-  color: white;
+  color: #ffffff;
 }
 
 .letter.incorrect {
@@ -132,14 +145,14 @@ div#game {
 }
 
 #cursor {
-  font-size: 30px;
+  font-size: 24px;
   display: none;
   width: 2px;
   color: transparent;
   background: white;
   position: fixed;
-  top: 375px;
-  left: 300px;
+  top: 275px;
+  left: 200px;
   animation: blink 1s infinite;
 }
 
@@ -155,37 +168,40 @@ div#game {
   }
 }
 
-#game:focus #cursor {
+#game:focus #cursor.blink {
   display: block;
 }
+
 #game:focus {
   outline: none;
 }
 
 .container-foot {
-  width: 1400px;
-  height: 100px;
+  width: 100%;
+  max-width: 1200px;
+  height: 80px;
   display: flex;
   padding: 20px;
-  font-size: 30px;
+  font-size: 24px;
   justify-content: space-around;
+  align-items: center;
 }
 
 button {
-  padding: 16px 32px;
-  font-size: 20px;
+  padding: 16px 36px;
+  font-size: 16px;
   font-weight: bold;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  color: #683434;
+  color: rgb(255, 136, 0);
   background-color: black;
   border: 1px solid red;
 }
 
 button:hover {
-  border: 1px solid #683434;
-  background-color: #683434;
+  border: 1px solid rgb(255, 136, 0);
+  background-color: rgb(255, 136, 0);
   color: black;
 }
 
@@ -196,17 +212,30 @@ footer {
   align-items: center;
   justify-content: center;
   height: fit-content;
-  padding: 40px;
+  padding: 20px;
+  margin-top: 50px;
 }
 
 .footer-credit {
-  font-family: cursive;
-  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+  color: rgb(226, 57, 57);
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff9900,
+    #ffff00
+  ); /* Adjust gradient colors as needed */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: saturateAnimation 5s linear infinite alternate;
 }
 
 .footer-slogan {
+  font-size: 18px;
   letter-spacing: 10px;
   padding-top: 10px auto 5px;
+  color: rgb(252, 118, 118);
 }
 
 #game.over #words {
@@ -222,7 +251,11 @@ footer {
   display: none;
 }
 
-
 .wpm.over {
-  color:red;
+  color: rgb(255, 186, 39);
+}
+
+.message {
+  font-size: 30px;
+  color: rgb(255, 136, 0);
 }
