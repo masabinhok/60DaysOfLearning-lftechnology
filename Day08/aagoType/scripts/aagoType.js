@@ -39,7 +39,8 @@ document.getElementById("game").addEventListener("keyup", (ev) => {
   const key = ev.key;
   const currentWord = document.querySelector(".word.current");
   const currentLetter = document.querySelector(".letter.current");
-  const expected = currentLetter?.innerHTML || " ";
+
+  let expected = currentLetter?.innerHTML || " ";
   const isLetter = key.length === 1 && key !== " ";
 
   const isSpace = key === " ";
@@ -53,15 +54,15 @@ document.getElementById("game").addEventListener("keyup", (ev) => {
       if (currentLetter.nextElementSibling) {
         addClass(currentLetter.nextSibling, "current");
       }
-    }
-    
-    else {
+    } else {
       const incorrectLetter = document.createElement("span");
       incorrectLetter.innerHTML = key;
       incorrectLetter.className = "letter incorrect extra";
       currentWord.appendChild(incorrectLetter);
     }
   }
+
+  //space button
 
   if (isSpace) {
     if (expected !== " ") {
@@ -80,6 +81,21 @@ document.getElementById("game").addEventListener("keyup", (ev) => {
     }
     addClass(currentWord.nextSibling.firstElementChild, "current");
   }
+// Move cursor to the position of the current letter or word
+const nextLetter = document.querySelector(".letter.current");
+const nextWord = document.querySelector(".word.current");
+const cursor = document.getElementById("cursor");
+
+if (nextLetter) {
+  const letterRect = nextLetter.getBoundingClientRect();
+  cursor.style.top = letterRect.top +2+ 'px';
+  cursor.style.left = letterRect.left + 'px';
+} else if (nextWord) {
+  const wordRect = nextWord.getBoundingClientRect();
+  cursor.style.top = wordRect.top + 2 + 'px';
+  cursor.style.left = wordRect.right + 'px';
+}
+
 });
 
 //new-game-button eventlistener

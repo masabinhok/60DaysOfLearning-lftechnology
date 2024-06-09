@@ -131,14 +131,14 @@ div#game {
 }
 
 #cursor {
-  width: 2px;
-  height: 30px;
-  color: white;
-  position: absolute;
-  top: 40px;
-  left: 40px;
-  animation: blink 0.5s infinite;
+  font-size:36px;
   display: none;
+  width: 2px;
+  background: white;
+  position: fixed;
+  top: 375px;
+  left:300px;
+  animation: blink 1s infinite;
 }
 
 @keyframes blink {
@@ -156,7 +156,6 @@ div#game {
 #game:focus #cursor {
   display: block;
 }
-
 #game:focus {
   outline: none;
 }
