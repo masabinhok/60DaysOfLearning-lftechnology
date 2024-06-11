@@ -1,0 +1,4 @@
+Day-10
+I revised JS to be ready for React.
+Day-11 
+I started 30 days of React challange which also included JS revision as JS refresher for the first day.
