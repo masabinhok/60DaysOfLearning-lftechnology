@@ -1,39 +1,35 @@
-//this is a react component, a component in react is a piece of resuable code that represents a part of user interface. Components are used to render, manage and update the UI elements in your app.
+import { useState } from 'react';
 
-//value is a props, props are used to pass data from one component to another.
-
-//useState is a hook that returns value and a function setValue to update the value. null passed to useState is used to represents a initial value.
-
-import { useState } from "react";
-
-function Square({ value, onSquareClick }) {
+function Square({value, onSquareClick}) {
   return (
     <button className="square" onClick={onSquareClick}>
       {value}
     </button>
   );
 }
+
 function Board({ xIsNext, squares, onPlay }) {
   function handleClick(i) {
-    if (squares[i] || calculateWinner(squares)) {
+    if (calculateWinner(squares) || squares[i]) {
       return;
     }
-
     const nextSquares = squares.slice();
     if (xIsNext) {
-      nextSquares[i] = "X";
+      nextSquares[i] = 'X';
     } else {
-      nextSquares[i] = "O";
+      nextSquares[i] = 'O';
     }
     onPlay(nextSquares);
   }
+
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
-    status = "Winner: " + winner;
+    status = 'Winner: ' + winner;
   } else {
-    status = "Next Player: " + (xIsNext ? "X" : "O");
+    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
   }
+
   return (
     <>
       <div className="status">{status}</div>
@@ -59,31 +55,35 @@ function Board({ xIsNext, squares, onPlay }) {
 export default function Game() {
   const [xIsNext, setXIsNext] = useState(true);
   const [history, setHistory] = useState([Array(9).fill(null)]);
-  const currentSquares = history[history.length - 1];
+  const [currentMove, setCurrentMove] = useState(0);
+  const currentSquares = history[currentMove];
 
   function handlePlay(nextSquares) {
-    setHistory([...history, nextSquares]);
+    const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
+    setHistory(nextHistory);
+    setCurrentMove(nextHistory.length - 1);
     setXIsNext(!xIsNext);
   }
 
   function jumpTo(nextMove) {
-    
-    // TODO
+    setCurrentMove(nextMove);
+    setXIsNext(nextMove % 2 === 0);
   }
 
   const moves = history.map((squares, move) => {
     let description;
     if (move > 0) {
-      description = "Go to move #" + move;
+      description = 'Go to move #' + move;
     } else {
-      description = "Go to game start";
+      description = 'Go to game start';
     }
     return (
-      <li>
+      <li key={move}>
         <button onClick={() => jumpTo(move)}>{description}</button>
       </li>
     );
   });
+
   return (
     <div className="game">
       <div className="game-board">
@@ -95,6 +95,7 @@ export default function Game() {
     </div>
   );
 }
+
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
@@ -114,13 +115,3 @@ function calculateWinner(squares) {
   }
   return null;
 }
-
-//first line defines a function called Square, the export js keyword makes this function accessbile outside of this file, you know the concept of modules.
-
-//default keyword tells other files using your code, that its the main function in your file.
-
-//second line returns a button element, return keyword in js symbolizes that you are returning whatever comes after.
-
-//button is a jsx element, meaning combination of js code and html tags, that describes what you would like to diplay..
-
-//in JSX className does same as class does in HTML, className='square' is a button property or a props that tells css how to style the button.
