@@ -1,27 +1,38 @@
 //this is a react component, a component in react is a piece of resuable code that represents a part of user interface. Components are used to render, manage and update the UI elements in your app.
 
 //value is a props, props are used to pass data from one component to another.
-function Square({ value }) {
-  return <button className="square">{value}</button>;
+
+//useState is a hook that returns value and a function setValue to update the value. null passed to useState is used to represents a initial value.
+
+import { useState } from "react";
+function Square() {
+  const [value, setValue] = useState(null);
+  function handleClick() {
+    setValue("X");
+  }
+  return (
+    <button onClick={handleClick} className="square">
+      {value}
+    </button>
+  );
 }
 export default function Board() {
   return (
     <>
       <div className="board-row">
-        {/* value is a prop passed from board to square compnent */}
-        <Square value="1" />
-        <Square value="2" />
-        <Square value="3" />
+        <Square />
+        <Square />
+        <Square />
       </div>
       <div className="board-row">
-        <Square value="4" />
-        <Square value="5" />
-        <Square value="6" />
+        <Square />
+        <Square />
+        <Square />
       </div>
       <div className="board-row">
-        <Square value="7" />
-        <Square value="8" />
-        <Square value="9" />
+        <Square />
+        <Square />
+        <Square />
       </div>
     </>
   );
