@@ -1,0 +1,19 @@
+Async Await
+Callbacks
+Hoisting
+Promises
+Scope
+Closures
+Map, Filter, Reduce
+Ternary Operator
+Optional Chaining, nulish coalescing, short circuit&&
+Destructuring
+Rest & Spread Operator
+Fetch API
+Try & Catch
+ES6+
+
+Array 
+Arrow Functions
+Objects
+Mutablity and Immutability
