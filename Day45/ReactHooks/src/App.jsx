@@ -1,13 +1,21 @@
-import React from "react";
-import State from "./hooks/State";
-import Effect from "./hooks/Effect";
+import Challanges from "./routes/Challanges";
+import Home from "./routes/Home";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Theory from "./routes/Theory";
+import Solutions from "./routes/Solutions";
+
 
 const App = () => {
   return (
-    <main className="flex items-center justify-center flex-col w-full">
-      <State />
-      <Effect />
-    </main>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/home" element={<Home />} />
+        <Route path="/challanges" element={<Challanges />} />
+        <Route path="/theory" element={<Theory />} />
+        <Route path="/solutions" element={<Solutions />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

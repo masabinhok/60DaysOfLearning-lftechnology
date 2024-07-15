@@ -7,4 +7,34 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  color: white;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+p {
+  color: red;
+  font-size: 30px;
+}
+
+button {
+  padding: 16px 20px;
+  margin: 8px auto;
+  background-color: black;
+  color: white;
+  border-radius: 12px;
+  font-size: 20px;
+}
+
+/* className="border-2 py-2 px-8 m-2 rounded-xl" */
+
+input {
+  border: white 2px solid;
+  padding: 8px 32px;
+  margin: 8px;
+  color: black;
+  border-radius: 8px;
 }
